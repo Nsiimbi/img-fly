@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Facade;
 class ImgFly
 {
 
-    public function routes()
+    public static function routes()
     {
         include __DIR__ . '../../Routes/web.php';
     }
@@ -68,10 +68,7 @@ class ImgFly
      */
     public function imgPreset($img, $preset = 'small', $callBackMethod = 'img')
     {
-      $parameters = config("imgfly.{$preset}");
-      return  call_user_func([$this, $callBackMethod], $img.$parameters);
+        $parameters = config("imgfly.{$preset}");
+        return  call_user_func([$this, $callBackMethod], $img . $parameters);
     }
-
-
-
 }
